@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h1>To Do</h1>
+<!-- <form [formGroup]="groupedform" (ngSubmit)="onsubmit()"> -->
+  <form [formGroup]="groupedform">
+  <p>
+    Task name: <input type="text" formControlName="taskname">
+  </p>
+  <p>
+    Due Date: <input type="text" formControlName="dueDate">
+  </p>
+  <p>
+    <!-- id: <input type="number" formControlName="idid"> -->
+  </p>
+
+  <br>
+    <div *ngFor="let a of priority">
+        <input type="radio" value="{{a}}"  formControlName="prioritylevel">{{a}}
+      </div>
+  <br>
+
+  <button type="submit" (click)="onsubmit()">Add</button>
+
+
+<br>
+  <div *ngFor="let t of todomap|keyvalue" >
+    Task name: {{t.value.taskname}}<br>
+  Due by: {{t.value.dueDate}} <br>
+  Urgency: {{t.value.prioritylevel}} <br>
+
+  <button (click)="onremove(t.value.id)">Delete</button>
+  <br><br>
+  </div>
+
+</form>
+</body>
+</html>
