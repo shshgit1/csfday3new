@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { todoObject } from './todoObject';
 
 
@@ -11,11 +11,12 @@ import { todoObject } from './todoObject';
 })
 export class AppComponent {
   title = 'day3new';
+  today=new Date;
 
   groupedform:FormGroup;
 
   taskn:string="";
-  dued:string="";
+  dued:Date=new Date;
   prioritylvl="";
   idnum:number =0;
   todomap=new Map();
@@ -23,20 +24,24 @@ export class AppComponent {
   priority = ["low", "medium", "high"];
 
   constructor(private fb:FormBuilder){
+
       this.groupedform=this.fb.group({
       taskname:new FormControl(),
-      dueDate:new FormControl(),
+      dueDate:new FormControl([Validators.required]),
       prioritylevel:new FormControl(),
-
       //idid:new FormControl()
-
-    })
+    }
+    )
   }
 
   onsubmit():void{
-
-    this.taskn=this.groupedform.value.taskname;
     this.dued=this.groupedform.value.dueDate;
+    if (this.groupedform.value.dueDate<this.today){
+      console.log("fail, date is wrong");
+    } //end if
+    else{
+    this.taskn=this.groupedform.value.taskname;
+
     this.prioritylvl=this.groupedform.value.prioritylevel;
     this.idnum=this.idnum+1;
     //this.idnum=this.groupedform.value.idid;
@@ -51,6 +56,7 @@ export class AppComponent {
 
     this.todomap.set(this.idnum,todoagenda);
     console.log("map is "+this.todomap.get(1).taskname)
+    }//end else
   }
 
   onremove(idid:number):void{

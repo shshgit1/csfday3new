@@ -18,10 +18,13 @@
   <p>
   Due Date:
     <mat-form-field appearance="fill">
-      <input matInput [matDatepicker]="pick" formControlName="dueDate">
+      <input matInput [matDatepicker]="pick" formControlName="dueDate" [min]="today">
         <mat-datepicker-toggle matSuffix [for]="pick">
           <mat-datepicker #pick ></mat-datepicker>
         </mat-datepicker-toggle>
+        <mat-error *ngIf="dued<today">
+          Error: Cannot choose date in past
+        </mat-error>
     </mat-form-field>
   </p>
 <br>
