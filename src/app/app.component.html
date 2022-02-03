@@ -14,28 +14,34 @@
     Task name: <input type="text" formControlName="taskname">
   </p>
   <p>
-    Due Date: <input type="text" formControlName="dueDate">
   </p>
   <p>
-    <!-- id: <input type="number" formControlName="idid"> -->
+  Due Date:
+    <mat-form-field appearance="fill">
+      <input matInput [matDatepicker]="pick" formControlName="dueDate">
+        <mat-datepicker-toggle matSuffix [for]="pick">
+          <mat-datepicker #pick ></mat-datepicker>
+        </mat-datepicker-toggle>
+    </mat-form-field>
   </p>
-
-  <br>
+<br>
+Priority:
     <div *ngFor="let a of priority">
         <input type="radio" value="{{a}}"  formControlName="prioritylevel">{{a}}
       </div>
   <br>
+<button type="submit" (click)="onsubmit()">Add</button>
 
-  <button type="submit" (click)="onsubmit()">Add</button>
 
 
 <br>
   <div *ngFor="let t of todomap|keyvalue" >
     Task name: {{t.value.taskname}}<br>
   Due by: {{t.value.dueDate}} <br>
+
   Urgency: {{t.value.prioritylevel}} <br>
 
-  <button (click)="onremove(t.value.id)">Delete</button>
+  <button (click)="onremove(t.key)">Delete</button>
   <br><br>
   </div>
 

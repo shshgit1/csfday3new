@@ -3,6 +3,7 @@ import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { todoObject } from './todoObject';
 
 
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -26,7 +27,9 @@ export class AppComponent {
       taskname:new FormControl(),
       dueDate:new FormControl(),
       prioritylevel:new FormControl(),
+
       //idid:new FormControl()
+
     })
   }
 
