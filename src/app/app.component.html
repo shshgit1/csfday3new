@@ -10,9 +10,10 @@
   <h1>To Do</h1>
 <!-- <form [formGroup]="groupedform" (ngSubmit)="onsubmit()"> -->
   <form [formGroup]="groupedform">
-  <p>
-    Task name: <input type="text" formControlName="taskname">
-  </p>
+
+    Task name: <input type="text" formControlName="taskname" required>
+    <!-- <div *ngIf="taskname.invalid">task can't be empty</div> -->
+    <div *ngIf="taskname.hasError('required')">Task should not be empty</div>
   <p>
   </p>
   <p>
@@ -33,7 +34,7 @@ Priority:
         <input type="radio" value="{{a}}"  formControlName="prioritylevel">{{a}}
       </div>
   <br>
-<button type="submit" (click)="onsubmit()">Add</button>
+<button type="submit" (click)="onsubmit()" [disabled]="groupedform.invalid">Add</button>
 
 
 

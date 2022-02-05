@@ -23,15 +23,24 @@ export class AppComponent {
 
   priority = ["low", "medium", "high"];
 
+      taskname=new FormControl('',[Validators.required]);
+      dueDate=new FormControl('',[Validators.required]);
+      prioritylevel=new FormControl('',[Validators.required]);
+
   constructor(private fb:FormBuilder){
 
-      this.groupedform=this.fb.group({
+    /*  this.groupedform=this.fb.group({
       taskname:new FormControl(),
       dueDate:new FormControl([Validators.required]),
       prioritylevel:new FormControl(),
-      //idid:new FormControl()
+
     }
-    )
+    ) */
+    this.groupedform=this.fb.group({
+      taskname:this.taskname,
+      dueDate:this.dueDate,
+      prioritylevel:this.prioritylevel
+    })
   }
 
   onsubmit():void{
