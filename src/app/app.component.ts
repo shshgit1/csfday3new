@@ -13,7 +13,6 @@ import { todoObject } from './todoObject';
 export class AppComponent {
   title = 'day3new';
   today=new Date;
-
   groupedform:FormGroup;
 
   taskn:string="";
@@ -54,10 +53,10 @@ export class AppComponent {
   }
   onsubmit():void{
     this.dued=this.groupedform.value.dueDate;
-    if (this.groupedform.value.dueDate<this.today){
+/*    if (this.groupedform.value.dueDate<this.today){
       console.log("fail, date is wrong");
     } //end if
-    else{
+    else{ */
     this.taskn=this.groupedform.value.taskname;
     this.prioritylvl=this.groupedform.value.prioritylevel;
     //this.idnum=this.idnum+1;
@@ -76,7 +75,7 @@ export class AppComponent {
 
    // this.todomap.set(JSON.stringify(todoagenda.taskname),JSON.stringify(todoagenda));
 
-    }//end else
+    //}//end else
   }
 
   onremove(idid:string):void{

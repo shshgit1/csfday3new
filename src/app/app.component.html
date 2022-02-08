@@ -42,7 +42,7 @@ onClick="window.location.reload()">Add</button>
 <br>
   <div *ngFor="let t of todomap|keyvalue" >
     Task name: {{t.value.taskname |json}}<br>
-  Due by: {{t.value.dueDate |json}} <br>
+  Due by: {{t.value.dueDate | date:'dd MMM yyyy'}} <br>
 
   Urgency: {{t.value.prioritylevel |json}} <br>
 
