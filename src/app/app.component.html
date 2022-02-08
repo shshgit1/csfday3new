@@ -34,20 +34,22 @@ Priority:
         <input type="radio" value="{{a}}"  formControlName="prioritylevel">{{a}}
       </div>
   <br>
-<button type="submit" (click)="onsubmit()" [disabled]="groupedform.invalid">Add</button>
+<button type="submit" (click)="onsubmit()" [disabled]="groupedform.invalid"
+onClick="window.location.reload()">Add</button>
 
 
 
 <br>
   <div *ngFor="let t of todomap|keyvalue" >
-    Task name: {{t.value.taskname}}<br>
-  Due by: {{t.value.dueDate}} <br>
+    Task name: {{t.value.taskname |json}}<br>
+  Due by: {{t.value.dueDate |json}} <br>
 
-  Urgency: {{t.value.prioritylevel}} <br>
+  Urgency: {{t.value.prioritylevel |json}} <br>
 
-  <button (click)="onremove(t.key)">Delete</button>
+  <button (click)="onremove(t.key)" onClick="window.location.reload()">Delete</button>
   <br><br>
   </div>
+
 
 </form>
 </body>
